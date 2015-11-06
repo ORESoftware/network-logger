@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 
+//http://stackoverflow.com/a/17365494/1223975
+
 var async = require('async');
 var app = require('../app');
 var debug = require('debug')('network-logger:server');
@@ -16,6 +18,7 @@ var tailer = require('../lib/tail');
 async.parallel([function(cb){
 
     var sub = require('../lib/sub');
+
     sub.on('connect', function () {
         cb(null);
     });
@@ -26,7 +29,8 @@ async.parallel([function(cb){
 
 }, function(cb){
 
-    var pub = require('../lib/redisPubSub');
+    var pub = require('../lib/pub');
+
     pub.on('connect', function () {
         cb(null);
     });
@@ -49,12 +53,8 @@ async.parallel([function(cb){
 
 
 
-
-
 function startServer() {
-
     http.createServer(app).listen(port).on('error', onError).on('listening', onListening);
-
 }
 
 

@@ -8,7 +8,7 @@ var Logger = require('../lib/logger');
 var path = require('path');
 var appRoot = require('app-root-path');
 
-var filepath = path.resolve(path.normalize(appRoot + '/logs/log_file.log'));
+var filepath = path.resolve(path.normalize(appRoot + '/logs/1.log'));
 
 var logger = new Logger({
     filepath: filepath,
