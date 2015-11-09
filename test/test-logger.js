@@ -15,13 +15,6 @@ var logger = new Logger({
     useSource: false
 });
 
-var int = 0;
-
-//setInterval(function(){
-//
-//    logger.log('cars'+ int++);
-//
-//},1000);
 
 console.time('logger');
 
