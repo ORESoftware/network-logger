@@ -37,6 +37,15 @@ var Syslog = require('node-syslog');
 Syslog.init("node-syslog", Syslog.LOG_PID | Syslog.LOG_ODELAY, Syslog.LOG_LOCAL0);
 
 
+//#this library
+var Logger = require('../lib/logger');
+
+var logger = new Logger({
+    filepath: '/dev/null',
+    useSource: false
+});
+
+
 ///////////////////////////////////////////////////////////////////////////////////
 
 console.time('syslog-time');
@@ -136,20 +145,6 @@ if(false) {
 
 
 /////////////////////////////////////////////////////////////
-
-
-var Logger = require('../lib/logger');
-var path = require('path');
-var appRoot = require('app-root-path');
-
-//var filepath = path.resolve(path.normalize(appRoot + '/logs/1.log'));
-
-var filepath = '/dev/null';
-
-var logger = new Logger({
-    filepath: filepath,
-    useSource: false
-});
 
 
 console.time('logger');
